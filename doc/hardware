@@ -1,2 +1,16 @@
 <硬體架構>
-MCU、Battery、keypad、uart_hmi、app、smart phone、real time clock、refrigerator
+MCU、Battery、keypad、screen、app、smart phone、real time clock、refrigerator
+
+  <規格>
+   MCU-->dis33fjmc706A
+   
+   Battery-->power supply--> AC/DC CONVERTER 5V 50W
+   
+   Keypad-->2.2寸 USART HMI TFT液晶屏模塊
+   Screen-->2.2寸 USART HMI TFT液晶屏模塊
+   
+   Real time clock-->Microchip Technology MCP7940M-I/P
+   
+   Refrigerator-->Panasonic國際牌變頻三門電冰箱 468公升NR-C479HV-S/NR-C479HV-K
+   
+   cellphone-->三星j7
