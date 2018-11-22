@@ -4,5 +4,6 @@
    最後作為人和機器的溝同，顯示介面為我們和機器的溝通橋樑，我們會打算用兩個顯示介面:     
    * 1.用MCU去控制HMI來顯示我們的選單，再用keypad的方式做輸入 
    * 2.則是用手機來顯示，我們寫一手機app來和機器做溝通。上述的概念就如圖(一)所示
-   ![圖一](midterm2/fresh_food/phtot1.png)
+   ![圖一](https://github.com/midterm2/fresh_food/blob/master/photo1.png)
 ## Architecture diagram
+![圖二](https://github.com/midterm2/fresh_food/blob/master/image/phtot2.JPG)
