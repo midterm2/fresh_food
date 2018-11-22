@@ -1,7 +1,7 @@
 # <硬體架構>
 MCU、Battery、keypad、uart_hmi、app、smart phone、real time clock、refrigerator
 ## <規格>
-*   MCU-->dsPIC33fj128mc706A
+*   MCU--> [dsPIC33fj128mc706A](http://ww1.microchip.com/downloads/en/DeviceDoc/70594d.pdf)
    
 *  Battery-->power supply--> AC/DC CONVERTER 5V 50W
    
