@@ -1,5 +1,5 @@
 # <硬體架構>
-MCU、Battery、keypad、uart_hmi、app、smart phone、real time clock、refrigerator
+MCU、Battery、keypad、uart_hmi、app、smart phone、real time clock、refrigerator、Communication
 ## <規格>
 *   MCU--> [dsPIC33fj128mc706A](http://ww1.microchip.com/downloads/en/DeviceDoc/70594d.pdf)
    
@@ -13,7 +13,7 @@ MCU、Battery、keypad、uart_hmi、app、smart phone、real time clock、refrig
    
 *   cellphone-->三星j7
 
- 
+*   Communication-->[Esp8266](https://uge-one.com/esp8266-serial-wifi-module-egypt.html)
 ## <價錢>
 
 *   Keypad-->2.2寸 USART HMI TFT液晶屏模塊->大約224$
