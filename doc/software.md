@@ -7,3 +7,5 @@
    ![圖一](https://github.com/midterm2/fresh_food/blob/master/photo1.png)
 ## Architecture diagram
 ![圖二](https://github.com/midterm2/fresh_food/blob/master/image/phtot2.JPG)
+
+![圖三](https://github.com/midterm2/fresh_food/blob/berlion-%E8%BB%9F%E9%AB%94%E6%9E%B6%E6%A7%8B/image/%E8%BB%9F%E9%AB%94%E6%9E%B6%E6%A7%8B.png)
