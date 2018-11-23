@@ -5,8 +5,8 @@ MCU、Battery、keypad、uart_hmi、app、smart phone、real time clock、refrig
    
 *   Battery-->power supply-->AC/DC CONVERTER 5V 50W
    
-*   Keypad-->[2.2寸 USART HMI TFT液晶屏模塊](https://world.taobao.com/item/530783674036.htm)
-*   Screen-->[2.2寸 USART HMI TFT液晶屏模塊](https://world.taobao.com/item/530783674036.htm)
+*   Keypad-->[3.2寸 USART HMI TFT液晶屏模塊]
+*   Screen-->[3.2寸 USART HMI TFT液晶屏模塊]
    
 *   Real time clock-->[Microchip Technology MCP7940M-I/P](http://ww1.microchip.com/downloads/en/devicedoc/20002292b.pdf)
    
