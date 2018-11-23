@@ -7,6 +7,7 @@ MCU、Battery、keypad、uart_hmi、app、smart phone、real time clock、refrig
    
 *   Keypad-->[3.2寸 USART HMI TFT液晶屏模塊](https://item.taobao.com/item.htm?
 spm=a230r.1.14.1.5b7d3f54I5B5Wd&id=561727164788&ns=1&abbucket=3#detail)
+
 *   Screen-->[3.2寸 USART HMI TFT液晶屏模塊](https://item.taobao.com/item.htm?spm=a230r.1.14.1.5b7d3f54I5B5Wd&id=561727164788&ns=1&abbucket=3#detail)
    
 *   Real time clock-->[Microchip Technology MCP7940M-I/P](http://ww1.microchip.com/downloads/en/devicedoc/20002292b.pdf)
