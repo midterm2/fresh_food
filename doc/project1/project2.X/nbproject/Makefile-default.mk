@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=harwave/UART.c main_fresh.c harwave/ds3234.c
+SOURCEFILES_QUOTED_IF_SPACED=harwave/UART.c main_fresh.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/harwave/UART.o ${OBJECTDIR}/main_fresh.o ${OBJECTDIR}/harwave/ds3234.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/harwave/UART.o.d ${OBJECTDIR}/main_fresh.o.d ${OBJECTDIR}/harwave/ds3234.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/harwave/UART.o ${OBJECTDIR}/main_fresh.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/harwave/UART.o.d ${OBJECTDIR}/main_fresh.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/harwave/UART.o ${OBJECTDIR}/main_fresh.o ${OBJECTDIR}/harwave/ds3234.o
+OBJECTFILES=${OBJECTDIR}/harwave/UART.o ${OBJECTDIR}/main_fresh.o
 
 # Source Files
-SOURCEFILES=harwave/UART.c main_fresh.c harwave/ds3234.c
+SOURCEFILES=harwave/UART.c main_fresh.c
 
 
 CFLAGS=
@@ -102,13 +102,6 @@ ${OBJECTDIR}/main_fresh.o: main_fresh.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  main_fresh.c  -o ${OBJECTDIR}/main_fresh.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/main_fresh.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I"harwave" -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/main_fresh.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/harwave/ds3234.o: harwave/ds3234.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/harwave" 
-	@${RM} ${OBJECTDIR}/harwave/ds3234.o.d 
-	@${RM} ${OBJECTDIR}/harwave/ds3234.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  harwave/ds3234.c  -o ${OBJECTDIR}/harwave/ds3234.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/harwave/ds3234.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I"harwave" -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/harwave/ds3234.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 else
 ${OBJECTDIR}/harwave/UART.o: harwave/UART.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/harwave" 
@@ -123,13 +116,6 @@ ${OBJECTDIR}/main_fresh.o: main_fresh.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/main_fresh.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  main_fresh.c  -o ${OBJECTDIR}/main_fresh.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/main_fresh.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I"harwave" -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/main_fresh.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/harwave/ds3234.o: harwave/ds3234.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/harwave" 
-	@${RM} ${OBJECTDIR}/harwave/ds3234.o.d 
-	@${RM} ${OBJECTDIR}/harwave/ds3234.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  harwave/ds3234.c  -o ${OBJECTDIR}/harwave/ds3234.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/harwave/ds3234.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -I"harwave" -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/harwave/ds3234.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

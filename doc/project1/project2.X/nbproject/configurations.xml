@@ -17,7 +17,6 @@
                    projectFiles="true">
       <logicalFolder name="harwave" displayName="harwave" projectFiles="true">
         <itemPath>harwave/UART.c</itemPath>
-        <itemPath>harwave/ds3234.c</itemPath>
       </logicalFolder>
       <itemPath>main_fresh.c</itemPath>
     </logicalFolder>
