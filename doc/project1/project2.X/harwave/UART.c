@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "defines.h"
-#include "mydelay.h"
 struct  STRUCT_USARTx_Fram                                  //??wifi??????????
 {
     char  Data_RX_BUF [RX_BUF_MAX_LEN];         //RX_BUF_MAX_LEN
@@ -36,10 +35,8 @@ void ESP8266_Uart(char* cmd){                                   //transmit cmd
     do
     {
         index++;
-//        while(!TXIF);         //waitting for TXREG = empty
-//        TXREG=cmd[index];
+        writeUART2Byte(cmd[index]);
     }while(cmd[index]!='\0');
-//    while(!TRMT);
 }
 u8 ESP8266_Cmd ( char* cmd , char* reply1 , char* reply2 ,u16 waittime )              // ESP8266 command instruction
     {    
@@ -54,12 +51,12 @@ u8 ESP8266_Cmd ( char* cmd , char* reply1 , char* reply2 ,u16 waittime )        
 
 
         if ( ( reply1 != 0 ) && ( reply2 != 0 ) )
-            return (  !strcmp ( strEsp8266_Fram_Record .Data_RX_BUF, reply1 ) || !strcmp ( strEsp8266_Fram_Record .Data_RX_BUF, reply2 ) ); 
+            return (  strstr ( strEsp8266_Fram_Record .Data_RX_BUF, reply1 ) || strstr ( strEsp8266_Fram_Record .Data_RX_BUF, reply2 ) ); 
         else if ( reply1 != 0 )
-            return (  !strcmp ( strEsp8266_Fram_Record .Data_RX_BUF, reply1 ) );
+            return (  strstr ( strEsp8266_Fram_Record .Data_RX_BUF, reply1 ) );
 
         else
-            return ( !strcmp ( strEsp8266_Fram_Record .Data_RX_BUF, reply2 ) );
+            return ( strstr ( strEsp8266_Fram_Record .Data_RX_BUF, reply2 ) );
 
 
     }   
@@ -230,8 +227,12 @@ void __attribute__((interrupt, auto_psv)) _U2TXInterrupt(void)
 
 void __attribute__((interrupt, auto_psv)) _U2RXInterrupt(void)
 {
-    int i=0;
+    char ch;
+        ch  = U2RXREG;
+        if( strEsp8266_Fram_Record .InfBit .FramLength < ( RX_BUF_MAX_LEN - 1 ) ) {  //??1???????
+            strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ++ ]  = ch;
+            if(strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength] == '\0')
+                strEsp8266_Fram_Record .InfBit .FramFinishFlag = 1;
+        }
     IFS1bits.U2RXIF = 0;
-    uart2dataFlag = 1;
-    uart2dataBuffer[uart2dataCounter++] = U2RXREG;
 }

@@ -55,7 +55,7 @@ typedef enum MODE {
     AP,
     STA_AP
 }MODE;
-void initial_UART();
+void initUART2(unsigned long baudrate);
 void ESP8266_Uart(char* cmd);
 u8 ESP8266_Cmd( char* cmd , char* reply1 , char* reply2 , u16 waittime );
 
