@@ -7,9 +7,6 @@
 #define UART_RX_BUFFER_SIZE             512
 #define UART_TX_BUFFER_SIZE             512
 
-#ifndef FCY
-#define FCY 40000000
-#endif
 
 #define UART_LOW_SPEED_MODE         0
 #if (UART_LOW_SPEED_MODE==0)
@@ -36,20 +33,20 @@ enum {
 
 extern int uart2dataFlag;
 extern char uart2dataBuffer[256];
-extern unsigned char uart2dataCounter;
+extern u8 uart2dataCounter;
 
 
 /* function prototype */
 void initUART2(unsigned long baudrate);
-void writeUART2Byte(unsigned char data);
-void writeUART2String(unsigned char *data, unsigned char length) __attribute__ ((section (".libperi")));
+void writeUART2Byte(u8 data);
+void writeUART2String(u8 *cmd) __attribute__ ((section (".libperi")));
 
 
-#define RX_BUF_MAX_LEN 50
+#define RX_BUF_MAX_LEN 30
 typedef enum TT  {
     TCP,
     UDP    
-};
+}TT;
 typedef enum MODE {
     STA,
     AP,
@@ -69,6 +66,7 @@ u8 ESP8266_BuildAP ( char* pSSID, char* pPassWord, char* enunPsdMode );
 u8 ESP8266_Link_Server ( enum TT enumE, char* ip, char* ComNum, int id);
 void AP_MODE(void);
  void ESP8266_Server(void);
-
+void STA_MODE();
+void ESP8266_client();
 #endif	/* XC_HEADER_TEMPLATE_H */
 

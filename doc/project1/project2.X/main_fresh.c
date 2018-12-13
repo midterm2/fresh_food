@@ -11,6 +11,8 @@
 #include "main.h"
 #include "UART.h"
 #include "defines.h"
+#include "delay.h"
+
 /****************** CRITICAL SETUP, MODIFY THEM CAREFULLY *******************/
 /* 0xF80000 FBS */
 #pragma config BWRP = WRPROTECT_OFF, BSS = NO_BOOT_CODE, RBS = NO_BOOT_RAM
@@ -29,8 +31,34 @@
 /* 0xF8000E FICD */
 #pragma config JTAGEN = OFF, ICS = PGD2
 /****************************************************************************/
+extern struct  STRUCT_USARTx_Fram                                  //??wifi??????????
+{
+    char  Data_RX_BUF [RX_BUF_MAX_LEN];         //RX_BUF_MAX_LEN
 
-void initPLL(void)
+  union {
+    u16 InfAll;
+    struct {
+          u8 FramLength       :7;                                    // 6:0 
+          u8 FramFinishFlag   :1;                                   // 7 
+      } InfBit;
+  }; 
+
+} strPc_Fram_Record, strEsp8266_Fram_Record;
+
+
+extern struct  STRUCT_USART1_1_Fram                                   //??wifi??????????
+{
+    char  Data_RX_BUF [RX_BUF_MAX_LEN];            //RX_BUF_MAX_LEN
+
+  union {
+    u8 InfAll;
+    struct {
+          u8 FramLength       :7 ;                                   // 6:0 
+          u8 FramFinishFlag   :1 ;                                   // 7 
+      } InfBit;
+  }; 
+} strPc1_1_Fram_Record, str1_1esp8266;
+void initPLL(void)//Fcy =40MHz;
 {
     int i, j;
 
@@ -51,10 +79,6 @@ void initPLL(void)
 }
 void PORTS_Test_Initial(void)
 {
-    PORTA = 0xffff;
-    TRISA = 0x0000;
-    PORTA = 0xffff;
-
     PORTB = 0xffff;
     TRISB = 0xffff;
     PORTB = 0xffff;
@@ -81,26 +105,20 @@ void PORTS_Test_Initial(void)
 }
 void main(void)
 {
-    int main(void)
-{
-    unsigned char counter = 0;
-    static  int                  ii ;
+ 
     initPLL();
-    char a[16]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
     while (OSCCONbits.CF == 1); //check clock failed
     while (OSCCONbits.COSC != 0b011); // Wait for Clock switch to occur
     while (OSCCONbits.LOCK == 0); //check PLL locked
-
     PORTS_Test_Initial();
     LATDbits.LATD11 = 1; /* turn the LCM back light */
+    __delay_ms ( 5000 );  
+    LATDbits.LATD11 = 0;
     initUART2(115200);
-   
+    ESP8266_client();
     while (1) {
         if(uart2dataFlag == 1){
             uart2dataFlag = 0;
-            
             }
-        }
-       
     }
 }
