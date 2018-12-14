@@ -1,4 +1,4 @@
-build/default/production/main_fresh.o:  \
+build/default/debug/main_fresh.o:  \
 main_fresh.c  \
 harwave/main.h  \
  harwave/UART.h  \

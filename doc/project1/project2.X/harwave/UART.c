@@ -210,11 +210,12 @@ void initUART2(unsigned long baudrate)
     U2MODEbits.PDSEL = ODD_PARITY_8BITS; //8-bit data,no parity
     U2MODEbits.STSEL = 0; //1 = Two Stop bits; 0 = One Stop bit
     U2MODEbits.BRGH=1;
-    
+    U2MODEbits.URXINV=0 ;
+            
     U2STAbits.UTXISEL0 = 0; // Interrupt generated when any character is transferred to the Transmit Shift register
     U2STAbits.UTXISEL1 = 0;
     U2STAbits.URXISEL = 0; // Interrupt is set when any character is received and transferred from the UxRSR to the receive
-
+    
     U2BRG = ((40000000 / baudrate) / BAUDRATE_DIV) - 1;
  
     
@@ -251,17 +252,3 @@ void __attribute__((interrupt, auto_psv)) _U2TXInterrupt(void)
     IFS1bits.U2TXIF = 0;
 }
 
-void __attribute__((interrupt, auto_psv)) _U2RXInterrupt(void)
-{
-    char ch;
-        ch  = U2RXREG;
-        if( strEsp8266_Fram_Record .InfBit .FramLength < ( RX_BUF_MAX_LEN - 1 ) ) {  //??1???????
-            strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ++ ]  = ch;
-            test[test_index++]=strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength -1] ;
-#ifndef teacher 
-            if(strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength] == '\0')
-                strEsp8266_Fram_Record .InfBit .FramFinishFlag = 1;
-#endif
-        }
-    IFS1bits.U2RXIF = 0;
-}
