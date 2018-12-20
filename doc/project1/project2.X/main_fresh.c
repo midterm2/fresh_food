@@ -108,7 +108,7 @@ void PORTS_Test_Initial(void)
 void __attribute__((interrupt, auto_psv)) _U2RXInterrupt(void)
 {
     char ch;
-        ch  = U2RXREG & 0xFF;
+        ch  = U2RXREG ;
         if( strEsp8266_Fram_Record .InfBit .FramLength < ( RX_BUF_MAX_LEN - 1 ) ) {  //??1???????
             strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ++ ]  = ch;
             test[test_index++]=ch ;
@@ -130,8 +130,9 @@ void main(void)
     LATDbits.LATD11 = 1; /* turn the LCM back light */
     __delay_ms ( 5000 );  
     LATDbits.LATD11 = 0;
-    initUART2(9600);
+    initUART2(115200);
     ESP8266_client();
+    ESP8266_SendString(0,"/use/cOYg0W-vkyDZ6ZeR4cbdcY",82)
     while (1) {
         if(uart2dataFlag == 1){
             uart2dataFlag = 0;

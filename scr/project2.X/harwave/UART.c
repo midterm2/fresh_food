@@ -2,6 +2,7 @@
 #include "UART.h"
 #include <stdio.h>
 #include <string.h>
+#include <p33FJ128MC706A.h>
 #include "defines.h"
 #include "delay.h"
 char test[10];
@@ -127,7 +128,7 @@ u8 ESP8266_JoinAP ( char* pSSID, char* pPassWord )             // to connect AP
  
     sprintf ( cCmd, "AT+CWJAP=\"%s\",\"%s\"\r\n", pSSID, pPassWord );
 
-    return ESP8266_Cmd ( cCmd, "OK", NULL, 7000 );
+    return ESP8266_Cmd ( cCmd, "OK", "CONNECTED", 7000 );
 
 }
 u8 ESP8266_BuildAP ( char* pSSID, char* pPassWord, char* enunPsdMode )        //pSSID name of AP pPassWord possword of AP enunPsdMode  method of encrypt   //channel =1 (default))
@@ -193,7 +194,7 @@ void STA_MODE(){
     while(!ESP8266_JoinAP( (void*)"Keng" , (void*)"12345675" ));
     while(!ESP8266_Cmd ( (void *)"AT+CIPMODE=1\r\n", (void *)"OK", 0 , 500 ));
     while(!ESP8266_Cmd ( (void *)"AT+CIPMUX=0\r\n", (void *)"OK", 0 , 500 ));
-    while(!ESP8266_Link_Server(TCP,(void*)"172.20.10.1",(void*)"5000",7));    //?????>5???????AT+CIPMUX=0
+    while(!ESP8266_Link_Server(TCP,(void*)"maker.ifttt.com",(void*)"80",7));    //?????>5???????AT+CIPMUX=0
  }
  //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
@@ -206,11 +207,12 @@ void initUART2(unsigned long baudrate)
     /* FIXME: check baudrate range */
 
     U2MODE = 0x0000; /* clear all setting */
+    
     U2MODEbits.RTSMD = 1; //1 = UxRTS pin in Simplex mode; 0 = UxRTS pin in Flow Control mode
-    U2MODEbits.PDSEL = ODD_PARITY_8BITS; //8-bit data,no parity
+    U2MODEbits.PDSEL = NONE_PARITY_8BITS; //8-bit data,no parity
     U2MODEbits.STSEL = 0; //1 = Two Stop bits; 0 = One Stop bit
-    U2MODEbits.BRGH=1;
-    U2MODEbits.URXINV=0 ;
+    U2MODEbits.BRGH=0;
+    U2MODEbits.URXINV=0;
             
     U2STAbits.UTXISEL0 = 0; // Interrupt generated when any character is transferred to the Transmit Shift register
     U2STAbits.UTXISEL1 = 0;

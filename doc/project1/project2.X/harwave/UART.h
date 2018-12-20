@@ -8,7 +8,7 @@
 #define UART_TX_BUFFER_SIZE             512
 
 
-#define UART_LOW_SPEED_MODE         0
+#define UART_LOW_SPEED_MODE         1
 #if (UART_LOW_SPEED_MODE==0)
     #define BAUDRATE_DIV            4
 #else
@@ -42,7 +42,7 @@ void writeUART2Byte(u8 data);
 void writeUART2String(u8 *cmd) __attribute__ ((section (".libperi")));
 
 
-#define RX_BUF_MAX_LEN 30
+#define RX_BUF_MAX_LEN 50
 typedef enum TT  {
     TCP,
     UDP    

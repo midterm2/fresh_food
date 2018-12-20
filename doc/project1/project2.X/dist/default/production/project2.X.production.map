@@ -128,12 +128,12 @@ Program Memory  [Origin = 0x200, Length = 0x15600]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0xc74          0x12ae  (4782)
-.const                       0xe74               0x184           0x246  (582)
-.text                        0xff8               0x434           0x64e  (1614)
-.dinit                      0x142c                0x44            0x66  (102)
-.init.delay32               0x1470                0x1c            0x2a  (42)
+.const                       0xe74               0x18e           0x255  (597)
+.text                       0x1002               0x432           0x64b  (1611)
+.dinit                      0x1434                0x44            0x66  (102)
+.init.delay32               0x1478                0x1c            0x2a  (42)
 
-                 Total program memory used (bytes):         0x1bd2  (7122) 5%
+                 Total program memory used (bytes):         0x1bde  (7134) 5%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -224,43 +224,43 @@ External Symbols in Program Memory (by address):
                   0x000e4c                  __Vacopy
                   0x000e50                  ___divsi3
                   0x000e6e                  ___umodsi3
-                  0x000ff8                  _ESP8266_Cmd
-                  0x001094                  _ESP8266_SendString
-                  0x0010d6                  _ESP8266_AT_Test
-                  0x0010ec                  _ESP8266_Rst
-                  0x0010fc                  _ESP8266_Net_Mode_Choose
-                  0x00113a                  _ESP8266_JoinAP
-                  0x001160                  _ESP8266_BuildAP
-                  0x00118c                  _ESP8266_Link_Server
-                  0x001210                  _AP_MODE
-                  0x00122a                  _STA_MODE
-                  0x001244                  _ESP8266_Server
-                  0x00129e                  _ESP8266_client
-                  0x0012f0                  _initUART2
-                  0x001336                  _writeUART2Byte
-                  0x00134e                  _initPLL
-                  0x00139e                  _PORTS_Test_Initial
-                  0x0013e2                  _main
-                  0x001470                  ___delay32
+                  0x001002                  _ESP8266_Cmd
+                  0x00109e                  _ESP8266_SendString
+                  0x0010e0                  _ESP8266_AT_Test
+                  0x0010f6                  _ESP8266_Rst
+                  0x001106                  _ESP8266_Net_Mode_Choose
+                  0x001144                  _ESP8266_JoinAP
+                  0x00116a                  _ESP8266_BuildAP
+                  0x001196                  _ESP8266_Link_Server
+                  0x00121a                  _AP_MODE
+                  0x001234                  _STA_MODE
+                  0x00124e                  _ESP8266_Server
+                  0x0012a8                  _ESP8266_client
+                  0x0012fa                  _initUART2
+                  0x00133e                  _writeUART2Byte
+                  0x001356                  _initPLL
+                  0x0013a6                  _PORTS_Test_Initial
+                  0x0013ea                  _main
+                  0x001478                  ___delay32
                   0xf80000                  __FBS.sec
                   0xf80002                  __FSS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x001210                  _AP_MODE
-                  0x0010d6                  _ESP8266_AT_Test
-                  0x001160                  _ESP8266_BuildAP
-                  0x000ff8                  _ESP8266_Cmd
-                  0x00113a                  _ESP8266_JoinAP
-                  0x00118c                  _ESP8266_Link_Server
-                  0x0010fc                  _ESP8266_Net_Mode_Choose
-                  0x0010ec                  _ESP8266_Rst
-                  0x001094                  _ESP8266_SendString
-                  0x001244                  _ESP8266_Server
-                  0x00129e                  _ESP8266_client
-                  0x00139e                  _PORTS_Test_Initial
-                  0x00122a                  _STA_MODE
+                  0x00121a                  _AP_MODE
+                  0x0010e0                  _ESP8266_AT_Test
+                  0x00116a                  _ESP8266_BuildAP
+                  0x001002                  _ESP8266_Cmd
+                  0x001144                  _ESP8266_JoinAP
+                  0x001196                  _ESP8266_Link_Server
+                  0x001106                  _ESP8266_Net_Mode_Choose
+                  0x0010f6                  _ESP8266_Rst
+                  0x00109e                  _ESP8266_SendString
+                  0x00124e                  _ESP8266_Server
+                  0x0012a8                  _ESP8266_client
+                  0x0013a6                  _PORTS_Test_Initial
+                  0x001234                  _STA_MODE
                   0x000332                  __DefaultInterrupt
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
@@ -274,7 +274,7 @@ External Symbols in Program Memory (by name):
                   0x00069a                  ___Printf_cdnopuxX
                   0x0007fe                  ___Putfld_cdnopsuxX
                   0x0007fe                  ___Putfld_cdnopuxX
-                  0x001470                  ___delay32
+                  0x001478                  ___delay32
                   0x0004c8                  ___divdi3
                   0x000e50                  ___divsi3
                   0x000528                  ___moddi3
@@ -291,15 +291,15 @@ External Symbols in Program Memory (by name):
                   0x000200                  __resetPRI
                   0x00067c                  __sprintf_cdnopsuxX
                   0x00067c                  __sprintf_cdnopuxX
-                  0x00134e                  _initPLL
-                  0x0012f0                  _initUART2
-                  0x0013e2                  _main
+                  0x001356                  _initPLL
+                  0x0012fa                  _initUART2
+                  0x0013ea                  _main
                   0x000a54                  _memchr
                   0x000a68                  _memcpy
                   0x000650                  _strchr
                   0x00061a                  _strlen
                   0x000626                  _strstr
-                  0x001336                  _writeUART2Byte
+                  0x00133e                  _writeUART2Byte
                   0x000336                  _writeUART2String
                   0x00066e                  sprintf_cdnopsuxX.XXeo:_prout
 
@@ -1741,33 +1741,33 @@ __c30_signature
  .ivt._U2RXInterrupt
                   0x000050          0x2 build/default/production/main_fresh.o
 
-.const              0x8e74        0x184 load address 0x000e74  
- .const             0x8e74        0x184 build/default/production/harwave/UART.o
+.const              0x8e74        0x18e load address 0x000e74  
+ .const             0x8e74        0x18e build/default/production/harwave/UART.o
 
-.text             0x000ff8        0x434
- .text            0x000ff8        0x356 build/default/production/harwave/UART.o
-                  0x000ff8                  _ESP8266_Cmd
-                  0x001094                  _ESP8266_SendString
-                  0x0010d6                  _ESP8266_AT_Test
-                  0x0010ec                  _ESP8266_Rst
-                  0x0010fc                  _ESP8266_Net_Mode_Choose
-                  0x00113a                  _ESP8266_JoinAP
-                  0x001160                  _ESP8266_BuildAP
-                  0x00118c                  _ESP8266_Link_Server
-                  0x001210                  _AP_MODE
-                  0x00122a                  _STA_MODE
-                  0x001244                  _ESP8266_Server
-                  0x00129e                  _ESP8266_client
-                  0x0012f0                  _initUART2
-                  0x001336                  _writeUART2Byte
- .text            0x00134e         0xde build/default/production/main_fresh.o
-                  0x00134e                  _initPLL
-                  0x00139e                  _PORTS_Test_Initial
-                  0x0013e2                  _main
+.text             0x001002        0x432
+ .text            0x001002        0x354 build/default/production/harwave/UART.o
+                  0x001002                  _ESP8266_Cmd
+                  0x00109e                  _ESP8266_SendString
+                  0x0010e0                  _ESP8266_AT_Test
+                  0x0010f6                  _ESP8266_Rst
+                  0x001106                  _ESP8266_Net_Mode_Choose
+                  0x001144                  _ESP8266_JoinAP
+                  0x00116a                  _ESP8266_BuildAP
+                  0x001196                  _ESP8266_Link_Server
+                  0x00121a                  _AP_MODE
+                  0x001234                  _STA_MODE
+                  0x00124e                  _ESP8266_Server
+                  0x0012a8                  _ESP8266_client
+                  0x0012fa                  _initUART2
+                  0x00133e                  _writeUART2Byte
+ .text            0x001356         0xde build/default/production/main_fresh.o
+                  0x001356                  _initPLL
+                  0x0013a6                  _PORTS_Test_Initial
+                  0x0013ea                  _main
 
-.dinit            0x00142c         0x44
- .dinit           0x00142c         0x44 data_init
+.dinit            0x001434         0x44
+ .dinit           0x001434         0x44 data_init
 
-.init.delay32     0x001470         0x1c
- .init.delay32    0x001470         0x1c c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
-                  0x001470                  ___delay32
+.init.delay32     0x001478         0x1c
+ .init.delay32    0x001478         0x1c c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
+                  0x001478                  ___delay32
