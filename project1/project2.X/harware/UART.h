@@ -42,6 +42,7 @@ void initUART2(unsigned long baudrate);
 void writeUART2Byte(u8 data);
 void writeUART2String(u8 *cmd) __attribute__ ((section (".libperi")));
 void initUART2(unsigned long baudrate);
+void initUART1(unsigned long baudrate);
 u8 * UART_ReceiveString (  );
 
 #endif	/* XC_HEADER_TEMPLATE_H */

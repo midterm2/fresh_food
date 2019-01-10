@@ -140,19 +140,20 @@ Program Memory  [Origin = 0x200, Length = 0x15600]
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x200               0xdfc          0x14fa  (5370)
-.const                       0xffc               0x20e           0x315  (789)
-.text                       0x120a               0x570           0x828  (2088)
-.dinit                      0x177a                0x64            0x96  (150)
-.init.delay32               0x17de                0x1c            0x2a  (42)
+.text                        0x200               0xe6c          0x15a2  (5538)
+.const                      0x106c               0x212           0x31b  (795)
+.text                       0x127e               0x5ee           0x8e5  (2277)
+.dinit                      0x186c                0x64            0x96  (150)
+.init.delay32               0x18d0                0x1c            0x2a  (42)
 
-                 Total program memory used (bytes):         0x20f7  (8439) 6%
+                 Total program memory used (bytes):         0x2262  (8802) 6%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
+.ivt._U1RXInterrupt           0x2a                 0x2             0x3  (3)
 .ivt._U2RXInterrupt           0x50                 0x2             0x3  (3)
 .ivt._U2TXInterrupt           0x52                 0x2             0x3  (3)
 
@@ -190,7 +191,7 @@ External Symbols in Data Memory (by address):
                     0x0810                  _strPc_Fram_Record
                     0x084e                  _strEsp8266_Fram_Record
                     0x088c                  _strPc1_1_Fram_Record
-                    0x08ca                  _str1_1esp8266
+                    0x08ca                  _HMI_Fram_Record_1
                     0x0908                  _uart2dataBuffer
                     0x0a44                  __Aldata
                     0x0a48                  __Size_block
@@ -198,10 +199,10 @@ External Symbols in Data Memory (by address):
 
 External Symbols in Data Memory (by name):
 
+                    0x08ca                  _HMI_Fram_Record_1
                     0x0a44                  __Aldata
                     0x0a48                  __Size_block
                     0x0a4a                  ___curbrk
-                    0x08ca                  _str1_1esp8266
                     0x084e                  _strEsp8266_Fram_Record
                     0x088c                  _strPc1_1_Fram_Record
                     0x0810                  _strPc_Fram_Record
@@ -215,131 +216,135 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00023c                  __psv_init
-                  0x000252                  __data_init
                   0x000252                  __data_init_standard
+                  0x000252                  __data_init
                   0x0002cc                  __U2TXInterrupt
                   0x0002e0                  __U2RXInterrupt
-                  0x00034c                  __DefaultInterrupt
-                  0x000392                  _writeUART2String
-                  0x0003bc                  ___udivsi3
-                  0x000428                  ___udivmoddi3
-                  0x00050e                  ___udivdi3
-                  0x00051c                  ___umoddi3
-                  0x000524                  ___divdi3
-                  0x000584                  ___moddi3
-                  0x0005e0                  ___muldi3
-                  0x000632                  ___umuldi3
-                  0x000676                  _free
-                  0x000740                  _malloc
-                  0x000794                  _strchr
-                  0x0007ac                  _strlen
-                  0x0007b8                  _strstr
-                  0x0007e2                  __Getmem
-                  0x0007f6                  sprintf_cdnopsuxX.XXeo:_prout
-                  0x000804                  __sprintf_cdnopsuxX
-                  0x000804                  __sprintf_cdnopuxX
-                  0x000822                  ___Printf_cdnopsuxX
-                  0x000822                  ___Printf_cdnopuxX
-                  0x000986                  ___Putfld_cdnopsuxX
-                  0x000986                  ___Putfld_cdnopuxX
-                  0x000bdc                  _memchr
-                  0x000bf0                  _memcpy
-                  0x000bfe                  __Litob
-                  0x000e5c                  __Puttxt
-                  0x000fd4                  __Vacopy
-                  0x000fd8                  ___divsi3
-                  0x000ff6                  ___umodsi3
-                  0x00120a                  _ESP8266_Cmd
-                  0x0012a6                  _ESP8266_SendString
-                  0x0012de                  _ESP8266_AT_Test
-                  0x0012f4                  _ESP8266_Rst
-                  0x001304                  _ESP8266_Net_Mode_Choose
-                  0x001342                  _ESP8266_JoinAP
-                  0x001368                  _ESP8266_BuildAP
-                  0x001394                  _ESP8266_Link_Server
-                  0x001418                  _AP_MODE
-                  0x001432                  _STA_MODE
-                  0x00144c                  _ESP8266_Server
-                  0x0014a6                  _ESP8266_client
-                  0x0014e8                  _SEND_URL
-                  0x001522                  _initPLL
-                  0x001572                  _PORTS_Test_Initial
-                  0x0015b6                  _main
-                  0x001614                  _create
-                  0x001664                  _insert
-                  0x0016b0                  _Delete
-                  0x0016d8                  _initUART2
-                  0x00171c                  _writeUART2Byte
-                  0x001734                  _UART_ReceiveString
-                  0x0017de                  ___delay32
+                  0x00034c                  __U1RXInterrupt
+                  0x0003bc                  __DefaultInterrupt
+                  0x000402                  _writeUART2String
+                  0x00042c                  ___udivsi3
+                  0x000498                  ___udivmoddi3
+                  0x00057e                  ___udivdi3
+                  0x00058c                  ___umoddi3
+                  0x000594                  ___divdi3
+                  0x0005f4                  ___moddi3
+                  0x000650                  ___muldi3
+                  0x0006a2                  ___umuldi3
+                  0x0006e6                  _free
+                  0x0007b0                  _malloc
+                  0x000804                  _strchr
+                  0x00081c                  _strlen
+                  0x000828                  _strstr
+                  0x000852                  __Getmem
+                  0x000866                  sprintf_cdnopsuxX.XXeo:_prout
+                  0x000874                  __sprintf_cdnopsuxX
+                  0x000874                  __sprintf_cdnopuxX
+                  0x000892                  ___Printf_cdnopsuxX
+                  0x000892                  ___Printf_cdnopuxX
+                  0x0009f6                  ___Putfld_cdnopsuxX
+                  0x0009f6                  ___Putfld_cdnopuxX
+                  0x000c4c                  _memchr
+                  0x000c60                  _memcpy
+                  0x000c6e                  __Litob
+                  0x000ecc                  __Puttxt
+                  0x001044                  __Vacopy
+                  0x001048                  ___divsi3
+                  0x001066                  ___umodsi3
+                  0x00127e                  _ESP8266_Cmd
+                  0x00131a                  _ESP8266_SendString
+                  0x001352                  _ESP8266_AT_Test
+                  0x001368                  _ESP8266_Rst
+                  0x001378                  _ESP8266_Net_Mode_Choose
+                  0x0013b6                  _ESP8266_JoinAP
+                  0x0013dc                  _ESP8266_BuildAP
+                  0x001408                  _ESP8266_Link_Server
+                  0x00148c                  _AP_MODE
+                  0x0014a6                  _STA_MODE
+                  0x0014c0                  _ESP8266_Server
+                  0x00151a                  _ESP8266_client
+                  0x00155c                  _SEND_URL
+                  0x001596                  _initPLL
+                  0x0015e6                  _PORTS_Test_Initial
+                  0x00162a                  _main
+                  0x0016bc                  _initUART2
+                  0x001700                  _initUART1
+                  0x001744                  _writeUART2Byte
+                  0x00175c                  _UART_ReceiveString
+                  0x0017a8                  _create
+                  0x0017f8                  _insert
+                  0x001844                  _Delete
+                  0x0018d0                  ___delay32
                   0xf80000                  __FBS.sec
                   0xf80002                  __FSS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x001418                  _AP_MODE
-                  0x0016b0                  _Delete
-                  0x0012de                  _ESP8266_AT_Test
-                  0x001368                  _ESP8266_BuildAP
-                  0x00120a                  _ESP8266_Cmd
-                  0x001342                  _ESP8266_JoinAP
-                  0x001394                  _ESP8266_Link_Server
-                  0x001304                  _ESP8266_Net_Mode_Choose
-                  0x0012f4                  _ESP8266_Rst
-                  0x0012a6                  _ESP8266_SendString
-                  0x00144c                  _ESP8266_Server
-                  0x0014a6                  _ESP8266_client
-                  0x001572                  _PORTS_Test_Initial
-                  0x0014e8                  _SEND_URL
-                  0x001432                  _STA_MODE
-                  0x001734                  _UART_ReceiveString
-                  0x00034c                  __DefaultInterrupt
+                  0x00148c                  _AP_MODE
+                  0x001844                  _Delete
+                  0x001352                  _ESP8266_AT_Test
+                  0x0013dc                  _ESP8266_BuildAP
+                  0x00127e                  _ESP8266_Cmd
+                  0x0013b6                  _ESP8266_JoinAP
+                  0x001408                  _ESP8266_Link_Server
+                  0x001378                  _ESP8266_Net_Mode_Choose
+                  0x001368                  _ESP8266_Rst
+                  0x00131a                  _ESP8266_SendString
+                  0x0014c0                  _ESP8266_Server
+                  0x00151a                  _ESP8266_client
+                  0x0015e6                  _PORTS_Test_Initial
+                  0x00155c                  _SEND_URL
+                  0x0014a6                  _STA_MODE
+                  0x00175c                  _UART_ReceiveString
+                  0x0003bc                  __DefaultInterrupt
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
                   0xf80002                  __FSS.sec
-                  0x0007e2                  __Getmem
-                  0x000bfe                  __Litob
-                  0x000e5c                  __Puttxt
+                  0x000852                  __Getmem
+                  0x000c6e                  __Litob
+                  0x000ecc                  __Puttxt
+                  0x00034c                  __U1RXInterrupt
                   0x0002e0                  __U2RXInterrupt
                   0x0002cc                  __U2TXInterrupt
-                  0x000fd4                  __Vacopy
-                  0x000822                  ___Printf_cdnopsuxX
-                  0x000822                  ___Printf_cdnopuxX
-                  0x000986                  ___Putfld_cdnopsuxX
-                  0x000986                  ___Putfld_cdnopuxX
-                  0x0017de                  ___delay32
-                  0x000524                  ___divdi3
-                  0x000fd8                  ___divsi3
-                  0x000584                  ___moddi3
-                  0x0005e0                  ___muldi3
-                  0x00050e                  ___udivdi3
-                  0x000428                  ___udivmoddi3
-                  0x0003bc                  ___udivsi3
-                  0x00051c                  ___umoddi3
-                  0x000ff6                  ___umodsi3
-                  0x000632                  ___umuldi3
+                  0x001044                  __Vacopy
+                  0x000892                  ___Printf_cdnopsuxX
+                  0x000892                  ___Printf_cdnopuxX
+                  0x0009f6                  ___Putfld_cdnopsuxX
+                  0x0009f6                  ___Putfld_cdnopuxX
+                  0x0018d0                  ___delay32
+                  0x000594                  ___divdi3
+                  0x001048                  ___divsi3
+                  0x0005f4                  ___moddi3
+                  0x000650                  ___muldi3
+                  0x00057e                  ___udivdi3
+                  0x000498                  ___udivmoddi3
+                  0x00042c                  ___udivsi3
+                  0x00058c                  ___umoddi3
+                  0x001066                  ___umodsi3
+                  0x0006a2                  ___umuldi3
                   0x000252                  __data_init
                   0x000252                  __data_init_standard
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x000804                  __sprintf_cdnopsuxX
-                  0x000804                  __sprintf_cdnopuxX
-                  0x001614                  _create
-                  0x000676                  _free
-                  0x001522                  _initPLL
-                  0x0016d8                  _initUART2
-                  0x001664                  _insert
-                  0x0015b6                  _main
-                  0x000740                  _malloc
-                  0x000bdc                  _memchr
-                  0x000bf0                  _memcpy
-                  0x000794                  _strchr
-                  0x0007ac                  _strlen
-                  0x0007b8                  _strstr
-                  0x00171c                  _writeUART2Byte
-                  0x000392                  _writeUART2String
-                  0x0007f6                  sprintf_cdnopsuxX.XXeo:_prout
+                  0x000874                  __sprintf_cdnopsuxX
+                  0x000874                  __sprintf_cdnopuxX
+                  0x0017a8                  _create
+                  0x0006e6                  _free
+                  0x001596                  _initPLL
+                  0x001700                  _initUART1
+                  0x0016bc                  _initUART2
+                  0x0017f8                  _insert
+                  0x00162a                  _main
+                  0x0007b0                  _malloc
+                  0x000c4c                  _memchr
+                  0x000c60                  _memcpy
+                  0x000804                  _strchr
+                  0x00081c                  _strlen
+                  0x000828                  _strstr
+                  0x001744                  _writeUART2Byte
+                  0x000402                  _writeUART2String
+                  0x000866                  sprintf_cdnopsuxX.XXeo:_prout
 
 Memory Configuration
 
@@ -402,7 +407,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000200        0xdfc
+.text             0x000200        0xe6c
  *(.init)
  .init            0x000200         0x4c c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
                   0x000200                  __resetPRI
@@ -415,92 +420,93 @@ LOAD c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libfx-elf.a
  *(.handle)
  .handle          0x0002c8          0x4 jump_table
  *(.isr*)
- .isr.text        0x0002cc         0x80 build/default/production/harware/UART.o
+ .isr.text        0x0002cc         0xf0 build/default/production/harware/UART.o
                   0x0002cc                  __U2TXInterrupt
                   0x0002e0                  __U2RXInterrupt
- .isr             0x00034c          0x4 default_isr
-                  0x00034c                  __DefaultInterrupt
+                  0x00034c                  __U1RXInterrupt
+ .isr             0x0003bc          0x4 default_isr
+                  0x0003bc                  __DefaultInterrupt
  *(.libc)
- .libc            0x000350         0x28 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(sbrk.Leo)
-                  0x000350                  _sbrk
- .libc            0x000378         0x1a c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(brk.Lelo)
-                  0x000378                  _brk
+ .libc            0x0003c0         0x28 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(sbrk.Leo)
+                  0x0003c0                  _sbrk
+ .libc            0x0003e8         0x1a c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(brk.Lelo)
+                  0x0003e8                  _brk
  *(.libm)
  *(.libdsp)
  *(.lib*)
- .libperi         0x000392         0x28 build/default/production/harware/UART.o
-                  0x000392                  _writeUART2String
+ .libperi         0x000402         0x28 build/default/production/harware/UART.o
+                  0x000402                  _writeUART2String
  .libpic30_crt_start_mode
-                  0x0003ba          0x2 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(crt_start_mode_normal.Leo)
-                  0x0003ba                  __crt_start_mode
-                  0x0003ba                  __crt_start_mode_normal
- .libm.udivsi3    0x0003bc         0x20 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(udivsi3.eo)
-                  0x0003bc                  ___udivsi3
+                  0x00042a          0x2 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(crt_start_mode_normal.Leo)
+                  0x00042a                  __crt_start_mode
+                  0x00042a                  __crt_start_mode_normal
+ .libm.udivsi3    0x00042c         0x20 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(udivsi3.eo)
+                  0x00042c                  ___udivsi3
  .libm.__PplusBdi
-                  0x0003dc         0x26 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
+                  0x00044c         0x26 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
  .libm.__PminusBdi
-                  0x000402         0x26 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
+                  0x000472         0x26 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
  .libm.__udivmoddi3
-                  0x000428         0xe6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
-                  0x000428                  ___udivmoddi3
+                  0x000498         0xe6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
+                  0x000498                  ___udivmoddi3
  .libm.__udivdi3
-                  0x00050e          0xe c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
-                  0x00050e                  ___udivdi3
+                  0x00057e          0xe c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
+                  0x00057e                  ___udivdi3
  .libm.__umoddi3
-                  0x00051c          0x8 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
-                  0x00051c                  ___umoddi3
+                  0x00058c          0x8 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
+                  0x00058c                  ___umoddi3
  .libm.__divdi3
-                  0x000524         0x60 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
-                  0x000524                  ___divdi3
+                  0x000594         0x60 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
+                  0x000594                  ___divdi3
  .libm.__moddi3
-                  0x000584         0x5c c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
-                  0x000584                  ___moddi3
+                  0x0005f4         0x5c c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
+                  0x0005f4                  ___moddi3
  .libm.__muldi3
-                  0x0005e0         0x52 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(muldi3.eo)
-                  0x0005e0                  ___muldi3
- .libm.umuldi3    0x000632         0x44 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(umuldi3.eo)
-                  0x000632                  ___umuldi3
- .libc.free       0x000676         0x64 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(free.XX_eo)
-                  0x000676                  _free
- .libc.findmem    0x0006da         0x66 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(malloc.XX_eo)
- .libc.malloc     0x000740         0x54 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(malloc.XX_eo)
-                  0x000740                  _malloc
- .libc.strchr     0x000794         0x18 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(strchr.XX_eo)
-                  0x000794                  _strchr
- .libc.strlen     0x0007ac          0xc c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(strlen.XX_eo)
-                  0x0007ac                  _strlen
- .libc.strstr     0x0007b8         0x2a c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(strstr.XX_eo)
-                  0x0007b8                  _strstr
- .libc._Getmem    0x0007e2         0x14 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xgetmem.XX_eo)
-                  0x0007e2                  __Getmem
- .libc.prout      0x0007f6          0xe c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(sprintf_cdnopsuxX.XXeo)
-                  0x0007f6                  sprintf_cdnopsuxX.XXeo:_prout
+                  0x000650         0x52 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(muldi3.eo)
+                  0x000650                  ___muldi3
+ .libm.umuldi3    0x0006a2         0x44 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(umuldi3.eo)
+                  0x0006a2                  ___umuldi3
+ .libc.free       0x0006e6         0x64 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(free.XX_eo)
+                  0x0006e6                  _free
+ .libc.findmem    0x00074a         0x66 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(malloc.XX_eo)
+ .libc.malloc     0x0007b0         0x54 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(malloc.XX_eo)
+                  0x0007b0                  _malloc
+ .libc.strchr     0x000804         0x18 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(strchr.XX_eo)
+                  0x000804                  _strchr
+ .libc.strlen     0x00081c          0xc c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(strlen.XX_eo)
+                  0x00081c                  _strlen
+ .libc.strstr     0x000828         0x2a c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(strstr.XX_eo)
+                  0x000828                  _strstr
+ .libc._Getmem    0x000852         0x14 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xgetmem.XX_eo)
+                  0x000852                  __Getmem
+ .libc.prout      0x000866          0xe c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(sprintf_cdnopsuxX.XXeo)
+                  0x000866                  sprintf_cdnopsuxX.XXeo:_prout
  .libc._sprintf_cdnopsuxX
-                  0x000804         0x1e c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(sprintf_cdnopsuxX.XXeo)
-                  0x000804                  __sprintf_cdnopuxX
-                  0x000804                  __sprintf_cdnopsuxX
+                  0x000874         0x1e c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(sprintf_cdnopsuxX.XXeo)
+                  0x000874                  __sprintf_cdnopuxX
+                  0x000874                  __sprintf_cdnopsuxX
  .libc.__Printf_cdnopsuxX
-                  0x000822        0x164 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xprintf_cdnopsuxX.XXeo)
-                  0x000822                  ___Printf_cdnopuxX
-                  0x000822                  ___Printf_cdnopsuxX
+                  0x000892        0x164 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xprintf_cdnopsuxX.XXeo)
+                  0x000892                  ___Printf_cdnopuxX
+                  0x000892                  ___Printf_cdnopsuxX
  .libc.__Putfld_cdnopsuxX
-                  0x000986        0x256 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xputfld_cdnopsuxX.XXeo)
-                  0x000986                  ___Putfld_cdnopsuxX
-                  0x000986                  ___Putfld_cdnopuxX
- .libc.memchr     0x000bdc         0x14 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(memchr.XX_eo)
-                  0x000bdc                  _memchr
- .libc.memcpy     0x000bf0          0xe c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(memcpy.XX_eo)
-                  0x000bf0                  _memcpy
- .libc._Litob     0x000bfe        0x25e c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xlitob.XX_eo)
-                  0x000bfe                  __Litob
- .libc._Puttxt    0x000e5c        0x178 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xputtxt.XX_eo)
-                  0x000e5c                  __Puttxt
- .libc._Vacopy    0x000fd4          0x4 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xvacopy.XX_eo)
-                  0x000fd4                  __Vacopy
- .libm.divsi3     0x000fd8         0x1e c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divsi3.eo)
-                  0x000fd8                  ___divsi3
- .libm.umodsi3    0x000ff6          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(umodsi3.eo)
-                  0x000ff6                  ___umodsi3
+                  0x0009f6        0x256 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xputfld_cdnopsuxX.XXeo)
+                  0x0009f6                  ___Putfld_cdnopsuxX
+                  0x0009f6                  ___Putfld_cdnopuxX
+ .libc.memchr     0x000c4c         0x14 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(memchr.XX_eo)
+                  0x000c4c                  _memchr
+ .libc.memcpy     0x000c60          0xe c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(memcpy.XX_eo)
+                  0x000c60                  _memcpy
+ .libc._Litob     0x000c6e        0x25e c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xlitob.XX_eo)
+                  0x000c6e                  __Litob
+ .libc._Puttxt    0x000ecc        0x178 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xputtxt.XX_eo)
+                  0x000ecc                  __Puttxt
+ .libc._Vacopy    0x001044          0x4 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-elf.a(xvacopy.XX_eo)
+                  0x001044                  __Vacopy
+ .libm.divsi3     0x001048         0x1e c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(divsi3.eo)
+                  0x001048                  ___divsi3
+ .libm.umodsi3    0x001066          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(umodsi3.eo)
+                  0x001066                  ___umodsi3
 
 usercode
  *(usercode)
@@ -550,42 +556,42 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x2130
+.debug_info       0x000000       0x2b4b
  *(.debug_info)
- .debug_info      0x000000        0xd0b build/default/production/harware/UART.o
- .debug_info      0x000d0b        0x71c build/default/production/ESP8266.o
- .debug_info      0x001427        0xa5d build/default/production/main_fresh.o
- .debug_info      0x001e84        0x2ac build/default/production/harware/LinkingList.o
+ .debug_info      0x000000       0x14aa build/default/production/harware/UART.o
+ .debug_info      0x0014aa        0x720 build/default/production/ESP8266.o
+ .debug_info      0x001bca        0xcd5 build/default/production/main_fresh.o
+ .debug_info      0x00289f        0x2ac build/default/production/harware/LinkingList.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x576
+.debug_abbrev     0x000000        0x59a
  *(.debug_abbrev)
  .debug_abbrev    0x000000          0x1 build/default/production/harware/delay.o
- .debug_abbrev    0x000001        0x1cf build/default/production/harware/UART.o
- .debug_abbrev    0x0001d0        0x17a build/default/production/ESP8266.o
- .debug_abbrev    0x00034a        0x164 build/default/production/main_fresh.o
- .debug_abbrev    0x0004ae         0xc8 build/default/production/harware/LinkingList.o
+ .debug_abbrev    0x000001        0x1f3 build/default/production/harware/UART.o
+ .debug_abbrev    0x0001f4        0x17a build/default/production/ESP8266.o
+ .debug_abbrev    0x00036e        0x164 build/default/production/main_fresh.o
+ .debug_abbrev    0x0004d2         0xc8 build/default/production/harware/LinkingList.o
 
-.debug_line       0x000000        0x3f9
+.debug_line       0x000000        0x423
  *(.debug_line)
  .debug_line      0x000000         0x1a build/default/production/harware/delay.o
- .debug_line      0x00001a        0x160 build/default/production/harware/UART.o
- .debug_line      0x00017a         0xbf build/default/production/ESP8266.o
- .debug_line      0x000239        0x148 build/default/production/main_fresh.o
- .debug_line      0x000381         0x78 build/default/production/harware/LinkingList.o
+ .debug_line      0x00001a        0x17f build/default/production/harware/UART.o
+ .debug_line      0x000199         0xbf build/default/production/ESP8266.o
+ .debug_line      0x000258        0x153 build/default/production/main_fresh.o
+ .debug_line      0x0003ab         0x78 build/default/production/harware/LinkingList.o
 
-.debug_frame      0x000000        0x376
+.debug_frame      0x000000        0x3c4
  *(.debug_frame)
- .debug_frame     0x000000         0xd2 build/default/production/harware/UART.o
- .debug_frame     0x0000d2        0x1d4 build/default/production/ESP8266.o
- .debug_frame     0x0002a6         0x68 build/default/production/main_fresh.o
- .debug_frame     0x00030e         0x68 build/default/production/harware/LinkingList.o
+ .debug_frame     0x000000        0x120 build/default/production/harware/UART.o
+ .debug_frame     0x000120        0x1d4 build/default/production/ESP8266.o
+ .debug_frame     0x0002f4         0x68 build/default/production/main_fresh.o
+ .debug_frame     0x00035c         0x68 build/default/production/harware/LinkingList.o
 
-.debug_str        0x000000         0xc4
+.debug_str        0x000000        0x164
  *(.debug_str)
- .debug_str       0x000000         0x53 build/default/production/harware/UART.o
- .debug_str       0x000053         0x52 build/default/production/ESP8266.o
- .debug_str       0x0000a5         0x1f build/default/production/main_fresh.o
+ .debug_str       0x000000         0xdf build/default/production/harware/UART.o
+ .debug_str       0x0000df         0x52 build/default/production/ESP8266.o
+ .debug_str       0x000131         0x33 build/default/production/main_fresh.o
 
 .debug_loc
  *(.debug_loc)
@@ -594,16 +600,16 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x2a9
+                  0x000000        0x2ce
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0xc0 build/default/production/harware/UART.o
+                  0x000000         0xe1 build/default/production/harware/UART.o
  .debug_pubnames
-                  0x0000c0        0x178 build/default/production/ESP8266.o
+                  0x0000e1        0x17c build/default/production/ESP8266.o
  .debug_pubnames
-                  0x000238         0x3e build/default/production/main_fresh.o
+                  0x00025d         0x3e build/default/production/main_fresh.o
  .debug_pubnames
-                  0x000276         0x33 build/default/production/harware/LinkingList.o
+                  0x00029b         0x33 build/default/production/harware/LinkingList.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1774,15 +1780,15 @@ __c30_signature
                   0x000116          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-elf.a(umodsi3.eo)
 
 .debug_pubtypes
-                  0x00011c        0x230
+                  0x00011c        0x301
  .debug_pubtypes
-                  0x00011c         0xde build/default/production/harware/UART.o
+                  0x00011c        0x171 build/default/production/harware/UART.o
  .debug_pubtypes
-                  0x0001fa         0x61 build/default/production/ESP8266.o
+                  0x00028d         0x61 build/default/production/ESP8266.o
  .debug_pubtypes
-                  0x00025b         0xbb build/default/production/main_fresh.o
+                  0x0002ee         0xf9 build/default/production/main_fresh.o
  .debug_pubtypes
-                  0x000316         0x36 build/default/production/harware/LinkingList.o
+                  0x0003e7         0x36 build/default/production/harware/LinkingList.o
 
 .nbss               0x0800          0x6
  .nbss              0x0800          0x4 build/default/production/harware/UART.o
@@ -1797,7 +1803,7 @@ __c30_signature
                     0x0810                  _strPc_Fram_Record
                     0x084e                  _strEsp8266_Fram_Record
                     0x088c                  _strPc1_1_Fram_Record
-                    0x08ca                  _str1_1esp8266
+                    0x08ca                  _HMI_Fram_Record_1
  .bss               0x0908        0x100 build/default/production/harware/UART.o
                     0x0908                  _uart2dataBuffer
 
@@ -1827,6 +1833,11 @@ __c30_signature
  .ivt._U2RXInterrupt
                   0x000050          0x2 build/default/production/harware/UART.o
 
+.ivt._U1RXInterrupt
+                  0x00002a          0x2
+ .ivt._U1RXInterrupt
+                  0x00002a          0x2 build/default/production/harware/UART.o
+
 .config_JTAGEN    0xf8000e          0x2
  .config_JTAGEN
                   0xf8000e          0x2 build/default/production/main_fresh.o
@@ -1845,41 +1856,42 @@ __c30_signature
 .config_IESO      0xf80006          0x2
  .config_IESO     0xf80006          0x2 build/default/production/main_fresh.o
 
-.const              0x8ffc        0x20e load address 0x000ffc  
- .const             0x8ffc        0x202 build/default/production/ESP8266.o
- .const             0x91fe          0xc build/default/production/main_fresh.o
+.const              0x906c        0x212 load address 0x00106c  
+ .const             0x906c        0x202 build/default/production/ESP8266.o
+ .const             0x926e         0x10 build/default/production/main_fresh.o
 
-.text             0x00120a        0x570
- .text            0x00120a        0x318 build/default/production/ESP8266.o
-                  0x00120a                  _ESP8266_Cmd
-                  0x0012a6                  _ESP8266_SendString
-                  0x0012de                  _ESP8266_AT_Test
-                  0x0012f4                  _ESP8266_Rst
-                  0x001304                  _ESP8266_Net_Mode_Choose
-                  0x001342                  _ESP8266_JoinAP
-                  0x001368                  _ESP8266_BuildAP
-                  0x001394                  _ESP8266_Link_Server
-                  0x001418                  _AP_MODE
-                  0x001432                  _STA_MODE
-                  0x00144c                  _ESP8266_Server
-                  0x0014a6                  _ESP8266_client
-                  0x0014e8                  _SEND_URL
- .text            0x001522         0xf2 build/default/production/main_fresh.o
-                  0x001522                  _initPLL
-                  0x001572                  _PORTS_Test_Initial
-                  0x0015b6                  _main
- .text            0x001614         0xc4 build/default/production/harware/LinkingList.o
-                  0x001614                  _create
-                  0x001664                  _insert
-                  0x0016b0                  _Delete
- .text            0x0016d8         0xa2 build/default/production/harware/UART.o
-                  0x0016d8                  _initUART2
-                  0x00171c                  _writeUART2Byte
-                  0x001734                  _UART_ReceiveString
+.text             0x00127e        0x5ee
+ .text            0x00127e        0x318 build/default/production/ESP8266.o
+                  0x00127e                  _ESP8266_Cmd
+                  0x00131a                  _ESP8266_SendString
+                  0x001352                  _ESP8266_AT_Test
+                  0x001368                  _ESP8266_Rst
+                  0x001378                  _ESP8266_Net_Mode_Choose
+                  0x0013b6                  _ESP8266_JoinAP
+                  0x0013dc                  _ESP8266_BuildAP
+                  0x001408                  _ESP8266_Link_Server
+                  0x00148c                  _AP_MODE
+                  0x0014a6                  _STA_MODE
+                  0x0014c0                  _ESP8266_Server
+                  0x00151a                  _ESP8266_client
+                  0x00155c                  _SEND_URL
+ .text            0x001596        0x126 build/default/production/main_fresh.o
+                  0x001596                  _initPLL
+                  0x0015e6                  _PORTS_Test_Initial
+                  0x00162a                  _main
+ .text            0x0016bc         0xec build/default/production/harware/UART.o
+                  0x0016bc                  _initUART2
+                  0x001700                  _initUART1
+                  0x001744                  _writeUART2Byte
+                  0x00175c                  _UART_ReceiveString
+ .text            0x0017a8         0xc4 build/default/production/harware/LinkingList.o
+                  0x0017a8                  _create
+                  0x0017f8                  _insert
+                  0x001844                  _Delete
 
-.dinit            0x00177a         0x64
- .dinit           0x00177a         0x64 data_init
+.dinit            0x00186c         0x64
+ .dinit           0x00186c         0x64 data_init
 
-.init.delay32     0x0017de         0x1c
- .init.delay32    0x0017de         0x1c c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
-                  0x0017de                  ___delay32
+.init.delay32     0x0018d0         0x1c
+ .init.delay32    0x0018d0         0x1c c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
+                  0x0018d0                  ___delay32

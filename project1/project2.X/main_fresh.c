@@ -92,14 +92,24 @@ void main(void)
     LATDbits.LATD11 = 1; /* turn the LCM back light */
     __delay_ms ( 5000 );  
     LATDbits.LATD11 = 0;
+    TRISDbits.TRISD11 = 1; /* turn the LCM back light */    
     initUART2(115200);
+    initUART1(9600);
     ESP8266_client();
     SEND_URL("111","222","333");
     u8* item;
-    listPointer first=NULL;
+    listPointer first=NULL,a;
     while (1) {
         item=UART_ReceiveString ();
-        if(item != NULL)
-          insert(&first,item);
+        if(item != NULL){
+          insert(&(first),item);
+          SEND_URL("OK","OK","OK");
+        }
+        if(PORTDbits.RD11==1){
+            for(a=first;a != NULL ;a=a->link){
+                a->data[2];
+               SEND_URL( &(a->data[2]) ,"OK","OK");
+            }
+        }
     }
 }

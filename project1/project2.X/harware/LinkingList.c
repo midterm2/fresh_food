@@ -1,7 +1,9 @@
 #include "LinkingList.h"
+#include <stdio.h>
+#include <stdlib.h>
 listPointer create (u8* data){
     listPointer first;
-    first=(listPointer)malloc(sizeof(Node));
+    first=(listPointer)malloc(sizeof(struct listNode));
     first->data[0]=*(data);
     first->data[1]=*(data+1);
     first->data[2]=*(data+2);
@@ -19,7 +21,7 @@ void insert(listPointer* first,u8* data){
        a->link->head=a;
     }
     else{
-        *first=new;
+        (*first)=new;
         (*first)->head=NULL;
     }
 }

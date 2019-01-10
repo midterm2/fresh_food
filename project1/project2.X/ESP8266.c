@@ -32,7 +32,7 @@ struct  STRUCT_USART1_1_Fram                                   //??wifi?????????
           u8 FramFinishFlag   :1 ;                                   // 7 
       } InfBit;
   }; 
-} strPc1_1_Fram_Record, str1_1esp8266;
+} strPc1_1_Fram_Record, HMI_Fram_Record_1;
 #ifndef teacher
 void ESP8266_Uart(char* cmd){                                   //transmit cmd
     int index=-1;
