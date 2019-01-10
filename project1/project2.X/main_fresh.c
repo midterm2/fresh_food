@@ -13,6 +13,7 @@
 #include "defines.h"
 #include "delay.h"
 #include "esp8266.h"
+#include "LinkingList.h"
 /****************** CRITICAL SETUP, MODIFY THEM CAREFULLY *******************/
 /* 0xF80000 FBS */
 #pragma config BWRP = WRPROTECT_OFF, BSS = NO_BOOT_CODE, RBS = NO_BOOT_RAM
@@ -93,10 +94,12 @@ void main(void)
     LATDbits.LATD11 = 0;
     initUART2(115200);
     ESP8266_client();
-    
+    SEND_URL("111","222","333");
+    u8* item;
+    listPointer first=NULL;
     while (1) {
-        if(uart2dataFlag == 1){
-            uart2dataFlag = 0;
-            }
+        item=UART_ReceiveString ();
+        if(item != NULL)
+          insert(&first,item);
     }
 }

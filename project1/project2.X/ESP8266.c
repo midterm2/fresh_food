@@ -3,6 +3,7 @@
 #include <string.h>
 #include "delay.h"
 #include <stdio.h>
+#include "UART.h"
 char test[10];
 int test_index;
 struct  STRUCT_USARTx_Fram                                  //??wifi??????????
@@ -53,13 +54,11 @@ u8 ESP8266_Cmd ( char* cmd , char* reply1 , char* reply2 ,u16 waittime )        
 #endif
         if ( ( reply1 == 0 ) && ( reply2 == 0 ) )                      //???????
             return true;
-        __delay_ms ( waittime );                 //????????????
-#ifdef teacher        
+        
+        __delay_ms ( waittime );                 //等待回傳值的時間
         strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ]  = '\0';
-
         strEsp8266_Fram_Record .InfBit .FramFinishFlag = 1;
-#endif
-
+        
         if ( ( reply1 != 0 ) && ( reply2 != 0 ) )
             return (   (unsigned short)strstr ( strEsp8266_Fram_Record .Data_RX_BUF, reply1 ) ||  (unsigned short)strstr ( strEsp8266_Fram_Record .Data_RX_BUF, reply2 ) ); 
         else if ( reply1 != 0 )
@@ -162,7 +161,7 @@ u8 ESP8266_Link_Server ( enum TT enumE, char* ip, char* ComNum, int id) //id:0 i
   else  //CIPMUX=0
       sprintf ( cCmd, "AT+CIPSTART=%s\r\n", cStr );
 
-    return ESP8266_Cmd ( cCmd, "OK", "ALREAY CONNECT", 500 );
+    return ESP8266_Cmd ( cCmd, "OK", "ALREAY CONNECT", 3000 );
 
 }
 void AP_MODE(){
@@ -194,11 +193,12 @@ void STA_MODE(){
     while(!ESP8266_Cmd ( (void *)"AT+CIPMUX=0\r\n", (void *)"OK", 0 , 500 ));
  }
  void SEND_URL(char* value1,char* value2,char* value3){
-     while(!ESP8266_Link_Server(TCP,(void*)"maker.ifttt.com",(void*)"80",7));
+     ESP8266_Link_Server(TCP,(void*)"maker.ifttt.com",(void*)"80",7);
      char* url;
      int length;
-     sprintf(url,"GET /trigger/DreamMaker/test/key/cOYg0W-vkyDZ6ZeR4cbdcY?value1=24&value2=37 HTTP/1.1\r\nHost: maker.ifttt.com\r\n\r\n");
+     sprintf(url,"GET /trigger/line/with/key/cOYg0W-vkyDZ6ZeR4cbdcY?value1=%s&value2=%s&value3=%s HTTP/1.1\r\nHost: maker.ifttt.com\r\n\r\n",value1,value2,value3);
      length=strlen(url);
      ESP8266_SendString(url,length);
      
  }
+ 

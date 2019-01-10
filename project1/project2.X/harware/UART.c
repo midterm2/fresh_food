@@ -12,6 +12,33 @@ extern int test_index;
  int uart2dataFlag = 0;
 char uart2dataBuffer[256] = {0};
 u8 uart2dataCounter = 0;
+extern struct  STRUCT_USARTx_Fram                                  //??wifi??????????
+{
+    char  Data_RX_BUF [RX_BUF_MAX_LEN];         //RX_BUF_MAX_LEN
+
+  union {
+    u16 InfAll;
+    struct {
+          u8 FramLength       :7;                                    // 6:0 
+          u8 FramFinishFlag   :1;                                   // 7 
+      } InfBit;
+  }; 
+
+} strPc_Fram_Record, strEsp8266_Fram_Record;
+
+
+extern struct  STRUCT_USART1_1_Fram                                   //??wifi??????????
+{
+    char  Data_RX_BUF [RX_BUF_MAX_LEN];            //RX_BUF_MAX_LEN
+
+  union {
+    u8 InfAll;
+    struct {
+          u8 FramLength       :7 ;                                   // 6:0 
+          u8 FramFinishFlag   :1 ;                                   // 7 
+      } InfBit;
+  }; 
+} strPc1_1_Fram_Record, str1_1esp8266;
 
 void initUART2(unsigned long baudrate)
 {
@@ -60,6 +87,21 @@ void writeUART2String(u8 *cmd)
     }
 }
 #endif
+u8 * UART_ReceiveString (  )
+{
+    char * pRecStr = 0;
+    strEsp8266_Fram_Record .InfBit .FramLength = 0;
+    if( ! (u8)strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "!" )){
+        strEsp8266_Fram_Record .InfBit .FramLength = 0;
+        strEsp8266_Fram_Record .InfBit .FramFinishFlag = 0;
+        while ( ! strEsp8266_Fram_Record .InfBit .FramFinishFlag );
+        if ( strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "\0" ) )
+           pRecStr = strEsp8266_Fram_Record .Data_RX_BUF;
+    }
+    else
+        pRecStr=NULL;
+    return pRecStr;
+}
 void __attribute__((interrupt, auto_psv)) _U2TXInterrupt(void)
 {
     IFS1bits.U2TXIF = 0;
@@ -67,15 +109,14 @@ void __attribute__((interrupt, auto_psv)) _U2TXInterrupt(void)
 
 void __attribute__((interrupt, auto_psv)) _U2RXInterrupt(void)
 {
-    char ch;
+        char ch;
         ch  = U2RXREG ;
         if( strEsp8266_Fram_Record .InfBit .FramLength < ( RX_BUF_MAX_LEN - 1 ) ) {  //??1???????
             strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ++ ]  = ch;
-            test[test_index++]=ch ;
-#ifndef teacher 
-            if(strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength] == '\0')
-                strEsp8266_Fram_Record .InfBit .FramFinishFlag = 1;
-#endif
+            test[test_index++]=ch ;   //debug用的
+            
+        if(strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength-1] == '\0')
+           strEsp8266_Fram_Record .InfBit .FramFinishFlag = 1;
         }
     IFS1bits.U2RXIF = 0;
 }

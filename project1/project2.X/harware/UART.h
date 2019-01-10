@@ -42,33 +42,7 @@ void initUART2(unsigned long baudrate);
 void writeUART2Byte(u8 data);
 void writeUART2String(u8 *cmd) __attribute__ ((section (".libperi")));
 void initUART2(unsigned long baudrate);
-extern struct  STRUCT_USARTx_Fram                                  //??wifi??????????
-{
-    char  Data_RX_BUF [RX_BUF_MAX_LEN];         //RX_BUF_MAX_LEN
-
-  union {
-    u16 InfAll;
-    struct {
-          u8 FramLength       :7;                                    // 6:0 
-          u8 FramFinishFlag   :1;                                   // 7 
-      } InfBit;
-  }; 
-
-} strPc_Fram_Record, strEsp8266_Fram_Record;
-
-
-extern struct  STRUCT_USART1_1_Fram                                   //??wifi??????????
-{
-    char  Data_RX_BUF [RX_BUF_MAX_LEN];            //RX_BUF_MAX_LEN
-
-  union {
-    u8 InfAll;
-    struct {
-          u8 FramLength       :7 ;                                   // 6:0 
-          u8 FramFinishFlag   :1 ;                                   // 7 
-      } InfBit;
-  }; 
-} strPc1_1_Fram_Record, str1_1esp8266;
+u8 * UART_ReceiveString (  );
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

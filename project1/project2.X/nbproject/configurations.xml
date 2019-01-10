@@ -9,6 +9,7 @@
       <itemPath>harware/main.h</itemPath>
       <itemPath>harware/UART.h</itemPath>
       <itemPath>esp8266.h</itemPath>
+      <itemPath>harware/LinkingList.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -21,6 +22,7 @@
         <itemPath>harware/delay.c</itemPath>
         <itemPath>harware/UART.c</itemPath>
         <itemPath>ESP8266.c</itemPath>
+        <itemPath>harware/LinkingList.c</itemPath>
       </logicalFolder>
       <itemPath>main_fresh.c</itemPath>
     </logicalFolder>
@@ -236,6 +238,7 @@
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>

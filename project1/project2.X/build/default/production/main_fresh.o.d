@@ -5,4 +5,5 @@ harware/main.h  \
 harware/defines.h  \
 harware/defines.h  \
 harware/delay.h  \
- esp8266.h 
+ esp8266.h  \
+harware/LinkingList.h 
