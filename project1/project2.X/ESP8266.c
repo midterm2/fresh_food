@@ -196,9 +196,16 @@ void STA_MODE(){
      ESP8266_Link_Server(TCP,(void*)"maker.ifttt.com",(void*)"80",7);
      char* url;
      int length;
+<<<<<<< HEAD
      sprintf(url,"GET /trigger/line/with/key/cOYg0W-vkyDZ6ZeR4cbdcY?value1=%s&value2=%s&value3=%s HTTP/1.1\r\nHost: maker.ifttt.com\r\n\r\n",value1,value2,value3);
+=======
+     sprintf(url,"GET /trigger/line/key/cOYg0W-vkyDZ6ZeR4cbdcY?value1=24&value2=37 HTTP/1.1\r\nHost: maker.ifttt.com\r\n\r\n");
+>>>>>>> refs/remotes/origin/master
      length=strlen(url);
      ESP8266_SendString(url,length);
      
  }
+<<<<<<< HEAD
  
+=======
+>>>>>>> refs/remotes/origin/master
