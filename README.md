@@ -1,2 +1,3 @@
-## Overview
-   Our team are going to make a smart refigerator  
+# Overview
+  ## *Our team are going to make a product
+  ##  to benefit this world*
